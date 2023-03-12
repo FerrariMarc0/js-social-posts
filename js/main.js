@@ -1,7 +1,12 @@
 'use strict';
 
-
-//milestone 1
+//Realizzare la lista dei post - idee e ipotesi
+//1. creo un ciclo che attraversa la lista dei post
+//2. per ogni post, creo (????) la struttura del post
+//2a  - uso createElement per definire ogni porzione del mio template
+//2b  - uso template literal e innerHTML per creare la struttura del template
+//2c  - clono un template html per creare la struttura del template (scelta a furor di popolo)
+//2d  - lasciamo fare a un framework il lavoro sporco
 
 /************
  * SETUP VARIABLES
@@ -12,6 +17,7 @@ const containerElement = document.getElementById('container');
 // elemento post da duplicare per rappresentare il post
 const templateElement = document.getElementById('template-post');
 
+let counter = 0;
 //struttura dati contenente la rappresentazione dei post
 const posts = [
     {
@@ -22,7 +28,7 @@ const posts = [
             age: 39,
             nPosts: 150
         },
-        created: '03-10-2023',
+        created: '3-10-2023',
         content: 'Lorem ipsum',
         media: 'https://unsplash.it/600/300?image=14',
         likes: 1
@@ -67,44 +73,7 @@ const posts = [
         likes: 80
     }
 ];
-
-
-
-
-/************
- * Functions
- ***********/
-
-function renderPost(elementHTML, postElement) {
-
-    //destrutturazione elemento post
-    const { author, created, content, media, likes, id } = postElement;
-    //esempio di destrutturazione proprietà author
-    const { name: nameAuthor } = author;
-
-    //author name
-    elementHTML.querySelector('.post-meta__author').innerHTML = nameAuthor;
-    //date
-    elementHTML.querySelector('.post-meta__time').innerHTML = created;
-    //description
-    elementHTML.querySelector('.post__text').innerHTML = content;
-    //image
-    elementHTML.querySelector('.post__image > img').src = media;
-    //likes
-    elementHTML.querySelector('.js-likes-counter').id = `like-counter-${id}`;
-    elementHTML.querySelector('.js-likes-counter').innerHTML = likes;
-
-    return elementHTML;
-}
-
-
-//Realizzare la lista dei post - idee e ipotesi
-//1. creo un ciclo che attraversa la lista dei post
-//2. per ogni post, creo (????) la struttura del post
-//2a  - uso createElement per definire ogni porzione del mio template
-//2b  - uso template literal e innerHTML per creare la struttura del template
-//2c  - clono un template html per creare la struttura del template (scelta a furor di popolo)
-//2d  - lasciamo fare a un framework il lavoro sporco
+let likedPosts = [];
 
 /**************
  * Render dei post
